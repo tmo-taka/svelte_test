@@ -1,7 +1,7 @@
 <script>
     import Form from '../components/Form.svelte'
     export let data;
-    function postApi() {
+    const postApi = () => {
         console.log(data);
     }
 </script>
@@ -13,3 +13,9 @@
 <Form />
 <button on:click={() => postApi()}>POST</button>
 <a href="/test">テストページへ</a>
+
+<ul>
+    {#each data.word as word}
+        <li>{word.name}</li>
+    {/each}
+</ul>
