@@ -1,9 +1,9 @@
-import { API_KEY, API_BASE_URL } from '$env/static/private';
+import { SANITY_PROJECT_ID, SANITY_DATASET } from '$env/static/private';
 import {createClient} from "@sanity/client";
 
 const client = createClient({
-    projectId: 'c1ruzi4o',
-    dataset: 'production',
+    projectId: SANITY_PROJECT_ID,
+    dataset: SANITY_DATASET,
     apiVersion: "2023-10-05",
     useCdn: false
 })
