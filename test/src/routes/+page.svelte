@@ -15,7 +15,7 @@
 <a href="/test">テストページへ</a>
 
 <ul>
-    {#each data.word as word}
-        <li>{word.name}</li>
+    {#each data.contents as content}
+        <li>{content.title}</li>
     {/each}
 </ul>
