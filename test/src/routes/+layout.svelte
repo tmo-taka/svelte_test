@@ -1,9 +1,11 @@
 <script>
-export function load() {
-	return { a: 1 };
-}
+    import { fly } from 'svelte/transition'
+    export let data
 </script>
 
-<div>
+<div
+    in:fly={{ x: -200, duration: 300, delay: 300 }}
+    out:fly={{ x: 200, duration: 300 }}
+>
     <slot />
 </div>

@@ -1,9 +1,10 @@
-<script>
+<script lang="ts">
     import Form from '../components/Form.svelte'
     export let data;
     const postApi = () => {
         console.log(data);
     }
+    const contentsList = data.contents.filter((content: {published: boolean}) => content.published)
 </script>
 
 <h1>Welcome to SvelteKit</h1>
@@ -15,7 +16,12 @@
 <a href="/test">テストページへ</a>
 
 <ul>
-    {#each data.contents as content}
-        <li>{content.title}</li>
+    {#each contentsList as content}
+        <li>
+            <a href="/test/{content.slug.current}">
+                {content.title}
+            </a>
+
+        </li>
     {/each}
 </ul>
