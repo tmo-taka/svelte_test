@@ -1,7 +1,19 @@
 <script>
+	import Card from '@smui/card';
 	export let data;
-	console.log(data.content);
+	export const {content} = data;
 </script>
 
-<h1>テストページ</h1>
-<div>{data.content}</div>
+<Card>
+	<h1>{content.title}</h1>
+	<ul>
+		{#each content.tags as tag}
+		<li>
+			<a href="">{tag}</a>
+		</li>
+		{/each}
+	</ul>
+	<div>
+		<img src={content.imageUrl} alt="">
+	</div>
+</Card>
