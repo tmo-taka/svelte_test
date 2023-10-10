@@ -13,11 +13,14 @@
 
     const tabs:string[] = Array.from(sitePath.values());
 
-    const valueToKey = (tab) => [...sitePath].find(([key, value]) => value == tab)[0];
+    const copyArr:[string,string][] = [...sitePath];
+    const valueToKey = (tab:string) => {
+        const searchObj:[string,string] | undefined = copyArr.find(([key, value]) => value == tab);
+        return searchObj ? searchObj[0] : '/'
+    };
 
     // TODO: typescript adjust
-    // let active: keyof typeof sitePath = sitePath.has(path) ? sitePath.get(path) : 'HOME';
-    let active: keyof typeof sitePath = sitePath.has(path) ? sitePath.get(path) : sitePath.get('/');
+    let active: keyof typeof sitePath = sitePath.get(path) ?? sitePath.get('/');
 </script>
 
 <div
@@ -25,12 +28,10 @@
     out:fly={{ x: 200, duration: 300 }}
 >
     <TabBar tabs={tabs} let:tab bind:active>
-        <Tab {tab}>
-            <a href={valueToKey(tab)}>
-                <Label>
-                    {tab}{valueToKey(tab)}
-                </Label>
-            </a>
+        <Tab {tab} href={valueToKey(tab)}>
+            <Label>
+                {tab}
+            </Label>
         </Tab>
     </TabBar>
     <slot />
