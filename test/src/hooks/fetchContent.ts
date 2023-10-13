@@ -21,10 +21,10 @@ export const fetchContentFromSlug = async(slug:string) => {
     try {
         const data = await client.fetch(`*[_type == "content" && slug.current == "${slug}"]{
             title,
-            tags,
             slug,
             published,
-            "imageUrl" :mainVisual.asset->url
+            "imageUrl" :mainVisual.asset->url,
+            tags[]->
         }[0]`);
         return data;
     } catch(e) {

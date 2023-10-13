@@ -9,7 +9,7 @@
 	<ul>
 		{#each content.tags as tag}
 		<li>
-			<a href="">{tag}</a>
+			<a href=tags/{tag.id.current}>{tag.name}</a>
 		</li>
 		{/each}
 	</ul>
