@@ -31,3 +31,17 @@ export const fetchContentFromSlug = async(slug:string) => {
         console.log(e)
     }
 }
+
+export const fetchContentFromTag = async() => {
+    try {
+        const data = await client.fetch(`*[_type == "content" && published == true]{
+            title,
+            slug,
+            "imageUrl" :mainVisual.asset->url,
+            tags[] -> {id}
+        }`);
+        return data;
+    } catch(e) {
+        console.log(e)
+    }
+}

@@ -10,7 +10,6 @@
             <a href="/contents/{content.slug.current}">
                 {content.title}
             </a>
-
         </li>
     {/each}
 </ul>
