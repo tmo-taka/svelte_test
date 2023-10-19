@@ -13,12 +13,12 @@
 <div>aの値{data.a}</div>
 <Form />
 <button on:click={() => postApi()}>POST</button>
-<a href="/test">テストページへ</a>
+<a href="/contents">テストページへ</a>
 
 <ul>
     {#each contentsList as content}
         <li>
-            <a href="/test/{content.slug.current}">
+            <a href="/contents/{content.slug.current}">
                 {content.title}
             </a>
 
