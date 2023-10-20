@@ -23,10 +23,7 @@
     let active: keyof typeof sitePath = sitePath.get(path) ?? sitePath.get('/');
 </script>
 
-<div
-    in:fly={{ x: -200, duration: 300, delay: 300 }}
-    out:fly={{ x: 200, duration: 300 }}
->
+<div>
     <TabBar tabs={tabs} let:tab bind:active>
         <Tab {tab} href={valueToKey(tab)}>
             <Label>
@@ -34,5 +31,12 @@
             </Label>
         </Tab>
     </TabBar>
-    <slot />
+    {#key data.path}
+        <div
+            in:fly={{ y: -200, duration: 300, delay: 300 }}
+            out:fly={{ y: 200, duration: 300 }}
+        >
+            <slot />
+        </div>
+    {/key}
 </div>
