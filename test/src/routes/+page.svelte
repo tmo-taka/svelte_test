@@ -17,6 +17,16 @@
             destory: () => { tip.destory(); }
         }
     }
+
+    let count = 0;
+    $: triple = count * 3;
+
+    const addCount = () => {
+        count++
+    }
+    const removeCount =() => {
+        count--
+    }
 </script>
 
 <h1>Welcome to SvelteKit</h1>
@@ -29,6 +39,13 @@
 <button use:focusFunc={'test'}>
     テスト
 </button>
+
+<div>count: {count}</div>
+<div>count三倍: {triple}</div>
+<div>
+    <button on:click={() => addCount()}>増やす</button>
+    <button on:click={() => removeCount()}>減らす</button>
+</div>
 
 <ul>
     {#each contentsList as content}
