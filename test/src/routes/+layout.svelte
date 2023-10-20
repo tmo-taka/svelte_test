@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { fly } from 'svelte/transition'
+    import { fade, slide } from 'svelte/transition'
     import TabBar from '@smui/tab-bar';
     import Tab, { Label }from '@smui/tab';
     export let data;
@@ -33,8 +33,8 @@
     </TabBar>
     {#key data.path}
         <div
-            in:fly={{ y: -200, duration: 300, delay: 300 }}
-            out:fly={{ y: 200, duration: 300 }}
+            in:fade={{ delay: 100 }}
+            out:slide
         >
             <slot />
         </div>
