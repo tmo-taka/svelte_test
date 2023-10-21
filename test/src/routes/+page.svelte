@@ -29,10 +29,13 @@
     }
 </script>
 
+<!-- <svelte:head>
+	<title>HOME</title>
+</svelte:head> -->
+
 <h1>Welcome to SvelteKit</h1>
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
 <p>こんにちは</p>
-<div>aの値{data.a}</div>
 <Form />
 <button on:click={() => postApi()}>POST</button>
 <a href="/contents">テストページへ</a>

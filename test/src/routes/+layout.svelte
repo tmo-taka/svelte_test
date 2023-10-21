@@ -1,9 +1,12 @@
 <script lang="ts">
     import { fade, slide } from 'svelte/transition'
+    import { page } from '$app/stores';
     import TabBar from '@smui/tab-bar';
     import Tab, { Label }from '@smui/tab';
     export let data;
     const {path} = data;
+
+    console.log($page);
 
     const sitePath = new Map<string, string>([
         ['/','HOME'],
@@ -23,6 +26,9 @@
     let active: keyof typeof sitePath = sitePath.get(path) ?? sitePath.get('/');
 </script>
 
+<svelte:head>
+	<title>{$page.data.title}</title>
+</svelte:head>
 <div>
     <TabBar tabs={tabs} let:tab bind:active>
         <Tab {tab} href={valueToKey(tab)}>
