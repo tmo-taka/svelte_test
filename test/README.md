@@ -2,7 +2,7 @@
 svelteを学習するためのブランチ
 
 ## node
-v16.19.0
+v20.8.0
 
 ## 使用ライブラリ
 | type            | name                     | 
@@ -13,4 +13,7 @@ v16.19.0
 
 ## command
 `npm run prepare`によってSMUIのCSSの更新をかけることできる。そのためSMUIを更新、新たにUIを新規インストールした場合にはコマンドを入力する必要あり。
+
+下記の通り、preapareは実行時に実施されてしまうので、変更  
+https://egashira.dev/blog/npm-install-option-ignore-scripts
 
