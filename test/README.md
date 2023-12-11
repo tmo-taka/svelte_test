@@ -17,3 +17,7 @@ v20.8.0
 下記の通り、preapareは実行時に実施されてしまうので、変更  
 https://egashira.dev/blog/npm-install-option-ignore-scripts
 
+## 環境に関して
+リポジトリ直下にapiディレクトリを置き、そちらは[sanity](https://github.com/tmo-taka/test_sanity)で管理する。
+docker-compose.ymlはこちらのリポジトリで管理する。
+
