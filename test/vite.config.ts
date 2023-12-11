@@ -4,6 +4,7 @@ import { defineConfig } from 'vite';
 export default defineConfig({
 	plugins: [sveltekit()],
 	server: {
+		host: true,
         proxy: {
             '/api': {
 				target: 'https://wordsapiv1.p.mashape.com',

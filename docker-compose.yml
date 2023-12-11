@@ -5,7 +5,7 @@ services:
     ports:
       - "3333:3333"
     volumes:
-      - ./schemas:/api/schemas
+      - ./api/schemas:/api/schemas
       - remove_client:/api/node_modules
   svelte:
     image: svelte
@@ -13,8 +13,8 @@ services:
     ports:
       - "5173:5173"
     volumes:
-      - ./src:/work/src
-      - remove_server:/work/node_modules
+      - ./test/src:/test/src/
+      - remove_server:/test/node_modules
     depends_on:
       - sanity
 
