@@ -1,7 +1,8 @@
 <script lang="ts">
     import tippy from 'tippy.js'
-    import List, { Item, Text } from '@smui/list';
+    import List, { Item, Text, Group } from '@smui/list';
     import Form from '../components/Form.svelte'
+
     export let data;
     const postApi = () => {
         console.log(data);
@@ -28,6 +29,12 @@
     const removeCount =() => {
         count--
     }
+
+    const movePage = (content) => {
+        // Page遷移
+        const createPath ='/contents/' + content.slug.current;
+        window.location.href = createPath;
+    }
 </script>
 
 <div>
@@ -51,14 +58,21 @@
 
     <section>
         <h2>記事一覧</h2>
-        <List class="demo-list">
-            {#each contentsList as content}
-                <Item on:SMUI:action={(content) => (console.log(content.title))}>
-                    <Text>
-                        {content.title}
-                    </Text>
-                </Item>
-            {/each}
-        </List>
+        <Group>
+            <List class="list">
+                {#each contentsList as content}
+                    <Item on:SMUI:action={() => (movePage(content))}>
+                        <Text>{content.title}</Text>
+                    </Item>
+                {/each}
+            </List>
+        </Group>
     </section>
 </div>
+
+<style>
+    * :global(.list) {
+        max-width: 300px;
+        border-left: 1px solid
+    }
+</style>
