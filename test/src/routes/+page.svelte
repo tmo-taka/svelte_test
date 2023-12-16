@@ -1,5 +1,6 @@
 <script lang="ts">
     import tippy from 'tippy.js'
+    import List, { Item, Text } from '@smui/list';
     import Form from '../components/Form.svelte'
     export let data;
     const postApi = () => {
@@ -29,34 +30,35 @@
     }
 </script>
 
-<!-- <svelte:head>
-	<title>HOME</title>
-</svelte:head> -->
-
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
-<p>こんにちは</p>
-<Form />
-<button on:click={() => postApi()}>POST</button>
-<a href="/contents">テストページへ</a>
-<button use:focusFunc={'test'}>
-    テスト
-</button>
-
-<div>count: {count}</div>
-<div>count三倍: {triple}</div>
 <div>
-    <button on:click={() => addCount()}>増やす</button>
-    <button on:click={() => removeCount()}>減らす</button>
+    <h1>これはブログです</h1>
+
+    <section>
+        <h2>フォーム</h2>
+        <Form />
+        <button on:click={() => postApi()}>POST</button>
+        <button use:focusFunc={'test'}>
+            テスト
+        </button>
+
+        <div>count: {count}</div>
+        <div>count三倍: {triple}</div>
+        <div>
+            <button on:click={() => addCount()}>増やす</button>
+            <button on:click={() => removeCount()}>減らす</button>
+        </div>
+    </section>
+
+    <section>
+        <h2>記事一覧</h2>
+        <List class="demo-list">
+            {#each contentsList as content}
+                <Item on:SMUI:action={(content) => (console.log(content.title))}>
+                    <Text>
+                        {content.title}
+                    </Text>
+                </Item>
+            {/each}
+        </List>
+    </section>
 </div>
-
-<ul>
-    {#each contentsList as content}
-        <li>
-            <a href="/contents/{content.slug.current}">
-                {content.title}
-            </a>
-
-        </li>
-    {/each}
-</ul>

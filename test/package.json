@@ -15,6 +15,7 @@
 	},
 	"devDependencies": {
 		"@smui/card": "^7.0.0-beta.15",
+		"@smui/list": "^7.0.0-beta.15",
 		"@smui/tab": "^7.0.0-beta.15",
 		"@smui/tab-bar": "^7.0.0-beta.15",
 		"@sveltejs/adapter-auto": "^2.0.0",

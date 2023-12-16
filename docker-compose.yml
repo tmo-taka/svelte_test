@@ -6,7 +6,6 @@ services:
       - "3333:3333"
     volumes:
       - ./api/schemas:/api/schemas
-      - remove_client:/api/node_modules
   svelte:
     image: svelte
     build: ./test
@@ -14,7 +13,6 @@ services:
       - "5173:5173"
     volumes:
       - ./test/src:/test/src/
-      - remove_server:/test/node_modules
     depends_on:
       - sanity
 
