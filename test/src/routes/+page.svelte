@@ -1,6 +1,6 @@
 <script lang="ts">
     import tippy from 'tippy.js'
-    import Form from '../components/Form.svelte'
+    import Form from '$lib/components/Form.svelte'
     import ContentList from '$lib/components/ContentList.svelte';
 
     export let data;
