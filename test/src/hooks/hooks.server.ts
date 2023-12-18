@@ -45,3 +45,12 @@ export const fetchContentFromTag = async() => {
         console.log(e)
     }
 }
+
+export const fetchTags = async() => {
+    try {
+        const data = await client.fetch(`*[_type == "tag"]`);
+        return data;
+    } catch(e) {
+        console.log(e)
+    }
+}

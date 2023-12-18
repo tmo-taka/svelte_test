@@ -1,4 +1,4 @@
-import { fetchContentFromTag } from "../../../hooks/fetchContent";
+import { fetchContentFromTag } from "../../../hooks/hooks.server";
 
 export async function load({params}) {
     // NOTE: loadの返り値はオブジェクトでないといけない
