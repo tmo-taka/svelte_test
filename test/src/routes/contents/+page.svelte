@@ -1,15 +1,9 @@
 <script lang="ts">
+    import ContentList from '$lib/components/ContentList.svelte';
+
     export let data;
-    const contentsList = data.contents.filter((content: {published: boolean}) => content.published)
+    console.log(data);
 </script>
 
 <h1>コンテンツ一覧</h1>
-<ul>
-    {#each contentsList as content}
-        <li>
-            <a href="/contents/{content.slug.current}">
-                {content.title}
-            </a>
-        </li>
-    {/each}
-</ul>
+<ContentList lists={data.contentsLists} />

@@ -4,13 +4,13 @@ import {createClient} from "@sanity/client";
 const client = createClient({
     projectId: SANITY_PROJECT_ID,
     dataset: SANITY_DATASET,
-    apiVersion: "2023-10-05",
+    apiVersion: "2023-12-18",
     useCdn: false
 })
 
 export const fetchContents = async() => {
     try {
-        const data = await client.fetch(`*[_type == "content"]`);
+        const data = await client.fetch(`*[_type == "content" && published == true]`);
         return data;
     } catch(e) {
         console.log(e)

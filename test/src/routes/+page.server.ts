@@ -1,9 +1,10 @@
-import { fetchContents } from "../hooks/fetchContent";
+import { fetch } from '$lib/server/fetchContent';
 
-export async function load({parent}) {
-    const data = await fetchContents();
+export async function load() {
+    const contentsLists = await fetch();
+    console.log(contentsLists);
 
     return {
-        contents: data
+        contentsLists
     };
 }
