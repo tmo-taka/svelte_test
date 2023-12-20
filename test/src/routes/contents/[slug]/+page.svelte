@@ -4,7 +4,7 @@
 	export const {content} = data;
 </script>
 
-<Card>
+<Card padded>
 	<h1>{content.title}</h1>
 	<ul>
 		{#each content.tags as tag}

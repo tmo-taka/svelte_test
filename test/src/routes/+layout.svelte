@@ -6,15 +6,13 @@
     export let data;
     const {path} = data;
 
-    console.log($page);
-
     const sitePath = new Map<string, string>([
         ['/','HOME'],
         ['/contents','Contents'],
         ['/tags','Tags'],
     ])
 
-    const tabs:string[] = Array.from(sitePath.values());
+    const tabs:string[] = [...sitePath.values()];
 
     const copyArr:[string,string][] = [...sitePath];
     const valueToKey = (tab:string) => {
@@ -23,7 +21,10 @@
     };
 
     // TODO: typescript adjust
-    let active: keyof typeof sitePath = sitePath.get(path) ?? sitePath.get('/');
+    const reverseKeyArr = [...sitePath.keys()].reverse();
+    const getKeypath = reverseKeyArr.find(key => path.includes(key));
+    console.log(getKeypath)
+    let active = sitePath.get(getKeypath);
 </script>
 
 <svelte:head>
@@ -41,8 +42,15 @@
         <div
             in:fade={{ delay: 100 }}
             out:slide
+            class="wrap"
         >
             <slot />
         </div>
     {/key}
 </div>
+
+<style>
+    .wrap {
+        padding: 16px;
+    }
+</style>
