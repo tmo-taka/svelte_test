@@ -1,7 +1,7 @@
 import { fetchTags } from "../../hooks/hooks.server";
 
 export async function load() {
-    const data = await fetchTags();
+    const data:TagLists = await fetchTags();
 
     return {
         tags: data

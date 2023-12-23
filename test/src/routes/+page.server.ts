@@ -1,8 +1,7 @@
 import { fetch } from '$lib/server/fetchContent';
 
 export async function load() {
-    const contentsLists = await fetch();
-    console.log(contentsLists);
+    const contentsLists:ContentsLists = await fetch();
 
     return {
         contentsLists

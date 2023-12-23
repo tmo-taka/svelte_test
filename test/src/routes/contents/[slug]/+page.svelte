@@ -1,6 +1,6 @@
-<script>
+<script lang="ts">
 	import Card from '@smui/card';
-	export let data;
+	export let data: {content: Content};
 	export const {content} = data;
 </script>
 

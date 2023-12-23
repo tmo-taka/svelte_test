@@ -1,6 +1,7 @@
 <script lang="ts">
-    export let data;
+    export let data: {tags: TagLists};
     const tagsList = data.tags
+    console.log(tagsList)
 </script>
 
 <h1>タグ一覧</h1>
