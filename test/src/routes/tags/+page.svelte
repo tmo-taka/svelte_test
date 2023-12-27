@@ -1,17 +1,9 @@
 <script lang="ts">
-    export let data: {tags: TagLists};
-    const tagsList = data.tags
-    console.log(tagsList)
+    import TagLists from "$lib/components/TagLists.svelte";
+    export let data: {tagLists: TagLists};
+    const { tagLists } = data
+    console.log(tagLists)
 </script>
 
 <h1>タグ一覧</h1>
-<ul>
-    {#each tagsList as tag}
-        <li>
-            <a href="/tags/{tag.id.current}">
-                {tag.name}
-            </a>
-
-        </li>
-    {/each}
-</ul>
+<TagLists lists={tagLists} />

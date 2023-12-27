@@ -1,7 +1,7 @@
 <script lang="ts">
     import tippy from 'tippy.js'
     import Form from '$lib/components/Form.svelte'
-    import ContentList from '$lib/components/ContentList.svelte';
+    import ContentLists from '$lib/components/ContentLists.svelte';
 
     export let data;
     const postApi = () => {
@@ -52,7 +52,7 @@
 
     <section>
         <h2>記事一覧</h2>
-        <ContentList lists={data.contentsLists} />
+        <ContentLists lists={data.contentsLists} />
     </section>
 </div>
 
