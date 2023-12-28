@@ -1,5 +1,5 @@
 <script lang="ts">
-import List, { Item, Text, Group } from '@smui/list';
+    import List, { Item, Text, Group } from '@smui/list';
 
     export let lists:ContentsLists;
 

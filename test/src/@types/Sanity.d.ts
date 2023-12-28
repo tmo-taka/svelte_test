@@ -26,4 +26,4 @@ declare type Content = {
 
 declare type ContentsLists = Content[]
 
-declare type TagLists = Tag[]
+declare type TagsLists = Tag[]

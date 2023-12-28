@@ -3,7 +3,7 @@
     import Form from '$lib/components/Form.svelte'
     import ContentLists from '$lib/components/ContentLists.svelte';
 
-    export let data;
+    export let data: {contentsLists: ContentsLists};
     const postApi = () => {
         console.log(data);
     }
