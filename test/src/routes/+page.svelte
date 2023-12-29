@@ -2,8 +2,11 @@
     import tippy from 'tippy.js'
     import Form from '$lib/components/Form.svelte'
     import ContentLists from '$lib/components/ContentLists.svelte';
+    import { initialSetUserName, getUserName } from '$lib/store/auth';
 
     export let data: {contentsLists: ContentsLists};
+    initialSetUserName();
+    console.log(getUserName());
     const postApi = () => {
         console.log(data);
     }
