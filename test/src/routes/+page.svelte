@@ -3,10 +3,9 @@
     import Form from '$lib/components/Form.svelte'
     import ContentLists from '$lib/components/ContentLists.svelte';
     import { authUser }from '../hooks/hooks.client';
-    import { initialSetUserName, getUserName, updateUserName } from '$lib/store/auth';
+    import { name } from '$lib/store/auth';
 
     export let data: {contentsLists: ContentsLists};
-    initialSetUserName();
 
     const postApi = async() => {
         const params = {
@@ -15,11 +14,13 @@
         }
         try {
             const data = await authUser(params);
-            console.log(data.user);
-            if(data.user) {
-                // NOTE: ログインされた場合
-                await updateUserName(data.user);
-                console.log(getUserName());
+            console.log(data);
+            // NOTE: ログインできた場合
+            if(data) {
+                name.set(data.user);
+                name.subscribe((value) => {
+                    console.log(value);
+                });
             }
         } catch (e) {
             throw e
