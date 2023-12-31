@@ -22,20 +22,15 @@ WORKDIR /test
 
 # 前タスクのnode.jsから持ってくる
 # vite-projectディレクトリのものをwork配下にコピーするという記述`
-COPY ./src ./src
-COPY ./svelte.config.js .
-COPY ./vite.config.ts .
-COPY ./tsconfig.json .
-COPY ./.env .
+COPY . .
 
 RUN ls -l
 
 COPY --from=nodejs /work/node_modules /test/node_modules
 COPY --from=nodejs /work/package.json /test/package.json
-RUN mkdir static
 RUN ls -l
 RUN npm run smui:create
 
 EXPOSE 5173
 
-CMD ["npm", "run", "dev", "--", "--host"]
+CMD ["npm", "run", "host"]

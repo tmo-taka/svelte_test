@@ -1,1 +1,7 @@
 ./node_modules
+./svelte-kit
+./static/*.css
+README.md
+tsconfig.json
+.gitignore
+.npmrc

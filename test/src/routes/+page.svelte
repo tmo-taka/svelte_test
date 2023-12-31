@@ -2,13 +2,28 @@
     import tippy from 'tippy.js'
     import Form from '$lib/components/Form.svelte'
     import ContentLists from '$lib/components/ContentLists.svelte';
-    import { initialSetUserName, getUserName } from '$lib/store/auth';
+    import { authUser }from '../hooks/hooks.client';
+    import { initialSetUserName, getUserName, updateUserName } from '$lib/store/auth';
 
     export let data: {contentsLists: ContentsLists};
     initialSetUserName();
-    console.log(getUserName());
-    const postApi = () => {
-        console.log(data);
+
+    const postApi = async() => {
+        const params = {
+            userName,
+            passWord
+        }
+        try {
+            const data = await authUser(params);
+            console.log(data.user);
+            if(data.user) {
+                // NOTE: ログインされた場合
+                await updateUserName(data.user);
+                console.log(getUserName());
+            }
+        } catch (e) {
+            throw e
+        }
     }
 
     const focusFunc = (node,param) => {
@@ -21,6 +36,9 @@
             destory: () => { tip.destory(); }
         }
     }
+
+    let userName = '';
+    let passWord = '';
 
     let count = 0;
     $: triple = count * 3;
@@ -38,9 +56,16 @@
     <h1>これはブログです</h1>
 
     <section>
-        <h2>フォーム</h2>
-        <Form />
-        <button on:click={() => postApi()}>POST</button>
+        <h2>ログインフォーム</h2>
+        <form>
+            <Form label={'ユーザー名'} value={userName} on:updateValue={e => userName = e.detail} />
+            <Form label={'パスワード'} value={passWord} on:updateValue={e => passWord = e.detail} />
+            <button on:click={() => postApi()}>ログイン</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>テストフォーム</h2>
         <button use:focusFunc={'test'}>
             テスト
         </button>

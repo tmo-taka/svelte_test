@@ -46,10 +46,6 @@ export const fetchContentFromTag = async() => {
     }
 }
 
-type TagsResponse = {
-    tagLists: TagLists
-}
-
 export const fetchTags = async() => {
     try {
         const data = await client.fetch(`*[_type == "tag"]`);

@@ -21,9 +21,11 @@ const config = {
 		// 		'script-src': ['self']
 		// 	}
 		// }
-		hooks: {
-			server: 'src/hooks/hooks.server',
-			client: 'src/hooks/hooks.client'
+		files: {
+			hooks: {
+				server: './src/hooks/hooks.server',
+				client: './src/hooks/hooks.client'
+			}
 		}
 	}
 };

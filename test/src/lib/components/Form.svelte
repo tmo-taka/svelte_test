@@ -1,14 +1,19 @@
-<script>
-    export let word = 'Hello World'
-    // $: document.word = word
-    const updateValue = (event) => {
-        word = event.target.value;
+<script lang="ts">
+    import { createEventDispatcher } from 'svelte'
+    const dispatch = createEventDispatcher()
+    export let label = 'ラベル名'
+    export let value = ''
+    const updateValue = (event: Event) => {
+        const { target } = event
+        if(target instanceof HTMLInputElement) {
+            value = target.value;
+            console.log(value);
+            dispatch('updateValue',value);
+        }
     }
 </script>
 
-{#if word.length < 10}
-    <div>{word}</div>
-{:else}
-    <div>文字を見せれない</div>
-{/if}
-<input type="text" value="{word}" on:input="{updateValue}"/>
+<fieldset>
+    <label for="UserName">{label}</label>
+    <input type="text" value="{value}" on:input="{updateValue}"/>
+</fieldset>
