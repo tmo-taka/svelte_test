@@ -21,6 +21,10 @@
                 name.subscribe((value) => {
                     console.log(value);
                 });
+                alert = ''
+            }
+            else {
+                alert = 'ユーザー名かパスワードが間違えています。'
             }
         } catch (e) {
             throw e
@@ -42,6 +46,7 @@
     let passWord = '';
 
     let count = 0;
+    let alert = ''
     $: triple = count * 3;
 
     const addCount = () => {
@@ -61,6 +66,9 @@
         <form>
             <Form label={'ユーザー名'} value={userName} on:updateValue={e => userName = e.detail} />
             <Form label={'パスワード'} value={passWord} on:updateValue={e => passWord = e.detail} />
+            {#if alert !== ''}
+                <div>{alert}</div>
+            {/if}
             <button on:click={() => postApi()}>ログイン</button>
         </form>
     </section>

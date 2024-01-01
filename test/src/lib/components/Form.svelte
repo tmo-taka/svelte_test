@@ -13,7 +13,7 @@
     }
 </script>
 
-<fieldset>
+<div>
     <label for="UserName">{label}</label>
     <input type="text" value="{value}" on:input="{updateValue}"/>
-</fieldset>
+</div>
