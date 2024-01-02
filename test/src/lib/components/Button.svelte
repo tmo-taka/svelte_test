@@ -1,12 +1,9 @@
 <script lang="ts">
     import Textfield from '@smui/textfield';
-    import Icon from '@smui/textfield/icon';
     import { createEventDispatcher } from 'svelte'
-
     const dispatch = createEventDispatcher()
     export let label = 'ラベル名'
     export let value = ''
-    export let ico: 'person' | 'key' | null;
     const updateValue = (event: Event) => {
         const { target } = event
         if(target instanceof HTMLInputElement) {
@@ -18,7 +15,5 @@
 </script>
 
 <div>
-    <Textfield bind:value={value} bind:label={label} on:input="{updateValue}">
-        <Icon class="material-icons" slot="leadingIcon">{ico}</Icon>
-    </Textfield>
+    <Textfield bind:value={value} bind:label={label} on:input="{updateValue}" />
 </div>

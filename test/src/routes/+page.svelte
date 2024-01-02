@@ -64,8 +64,8 @@
     <section>
         <h2>ログインフォーム</h2>
         <form>
-            <Form label={'ユーザー名'} value={userName} on:updateValue={e => userName = e.detail} />
-            <Form label={'パスワード'} value={passWord} on:updateValue={e => passWord = e.detail} />
+            <Form label={'ユーザー名'} value={userName} ico='person' on:updateValue={e => userName = e.detail} />
+            <Form label={'パスワード'} value={passWord} ico='key' on:updateValue={e => passWord = e.detail} />
             {#if alert !== ''}
                 <div>{alert}</div>
             {/if}

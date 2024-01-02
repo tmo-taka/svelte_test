@@ -32,6 +32,10 @@
 
 <svelte:head>
 	<title>{$page.data.title}</title>
+    <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
 </svelte:head>
 <div>
     <TabBar tabs={tabs} let:tab bind:active>
