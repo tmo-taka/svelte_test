@@ -9,5 +9,7 @@
 </script>
 
     <Button on:click={() => clickButton() } variant="raised">
-        <Label><slot /></Label>
+        <Label>
+            <slot>ボタン</slot>
+        </Label>
     </Button>
