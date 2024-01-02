@@ -1,6 +1,7 @@
 <script lang="ts">
     import tippy from 'tippy.js'
     import Form from '$lib/components/Form.svelte'
+    import Button from '$lib/components/Button.svelte';
     import ContentLists from '$lib/components/ContentLists.svelte';
     import { authUser }from '../hooks/hooks.client';
     import { name } from '$lib/store/auth';
@@ -69,7 +70,7 @@
             {#if alert !== ''}
                 <div>{alert}</div>
             {/if}
-            <button on:click={() => postApi()}>ログイン</button>
+            <Button on:clickButton={postApi}>ログイン</Button>
         </form>
     </section>
 
