@@ -1,5 +1,7 @@
-import { writable } from 'svelte/store';
+import { writable, type Writable } from 'svelte/store';
 import { getContext, setContext } from 'svelte';
+
+type Context = Writable<string>
 
 export const name = writable('None')
 
@@ -10,4 +12,4 @@ export const updateUserName = (newUserName: string):void => {
     setContext('userName', name);
 }
 
-export const getUserName = () => getContext('userName');
+export const getUserName = () => getContext<Context>('userName');
