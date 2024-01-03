@@ -38,14 +38,19 @@
     />
 </svelte:head>
 <div>
-    <TabBar tabs={tabs} let:tab bind:active>
-        <Tab {tab} href={valueToKey(tab)}>
-            <Label>
-                {tab}
-            </Label>
-        </Tab>
-    </TabBar>
-    { $userName }
+    <header class="header">
+        <TabBar tabs={tabs} let:tab bind:active>
+            <Tab {tab} href={valueToKey(tab)}>
+                <Label>
+                    {tab}
+                </Label>
+            </Tab>
+        </TabBar>
+        <div class="userBord">
+            <i class="material-icons" aria-hidden="true">person</i>
+            { $userName }
+        </div>
+    </header>
     {#key data.path}
         <div
             in:fade={{ delay: 100 }}
@@ -58,6 +63,19 @@
 </div>
 
 <style>
+    .header {
+        text-align: right;
+    }
+    .userBord {
+        display: inline-flex;
+        justify-content: space-around;
+        align-items: center;
+        color: #a260bf;
+        border-bottom: solid 1px #a260bf;
+    }
+    i {
+        margin-right: 8px;
+    }
     .wrap {
         padding: 16px;
     }
