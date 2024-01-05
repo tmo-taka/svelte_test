@@ -31,7 +31,7 @@
 </script>
 
 <svelte:head>
-	<title>{$page.data.title}</title>
+	<title>svelteテスト</title>
     <link
         rel="stylesheet"
         href="https://fonts.googleapis.com/icon?family=Material+Icons"

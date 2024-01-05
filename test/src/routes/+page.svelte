@@ -1,5 +1,4 @@
 <script lang="ts">
-    import tippy from 'tippy.js'
     import Form from '$lib/components/Form.svelte'
     import Button from '$lib/components/Button.svelte';
     import ContentLists from '$lib/components/ContentLists.svelte';
@@ -32,17 +31,6 @@
         }
     }
 
-    const focusFunc = (node,param) => {
-        let tip = tippy(node, { content: param});
-        node.focus();
-        return {
-            update: (newParams) => {
-                tip.setProps(newParams);
-            },
-            destory: () => { tip.destory(); }
-        }
-    }
-
     let userName = '';
     let passWord = '';
 
@@ -72,20 +60,6 @@
             {/if}
             <Button on:clickButton={postApi}>ログイン</Button>
         </form>
-    </section>
-
-    <section>
-        <h2>テストフォーム</h2>
-        <button use:focusFunc={'test'}>
-            テスト
-        </button>
-
-        <div>count: {count}</div>
-        <div>count三倍: {triple}</div>
-        <div>
-            <button on:click={() => addCount()}>増やす</button>
-            <button on:click={() => removeCount()}>減らす</button>
-        </div>
     </section>
 
     <section>
