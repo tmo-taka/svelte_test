@@ -54,3 +54,12 @@ export const fetchTags = async() => {
         throw e
     }
 }
+
+export const authUser = async(params:{userName: string, passWord: string}) => {
+    try {
+        const data = await client.fetch(`*[_type == "auth" && user == "${params.userName}" && password == "${params.passWord}"][0]`);
+        return data;
+    } catch(e: unknown) {
+        throw e;
+    }
+}

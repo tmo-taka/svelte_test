@@ -1,12 +1,12 @@
 <script lang="ts">
     import { fade, slide } from 'svelte/transition'
-    import { page } from '$app/stores';
     import TabBar from '@smui/tab-bar';
     import Tab, { Label }from '@smui/tab';
-    import { getUserName, initialSetUserName } from '$lib/store/auth';
+    import { getUserName, initialSetUserName, updateUserName } from '$lib/store/auth';
     export let data;
-    const {path} = data;
+    const {path, user} = data;
     initialSetUserName();
+    updateUserName(user);
     const userName = getUserName();
 
     const sitePath = new Map<string, string>([

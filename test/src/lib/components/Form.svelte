@@ -7,6 +7,7 @@
     export let label = 'ラベル名'
     export let value = ''
     export let ico: 'person' | 'key' | null;
+    export let name:string
     const updateValue = (event: Event) => {
         const { target } = event
         if(target instanceof HTMLInputElement) {
@@ -18,7 +19,7 @@
 </script>
 
 <div>
-    <Textfield bind:value={value} bind:label={label} on:input="{updateValue}">
+    <Textfield bind:value={value} bind:label={label} input$name={name} on:input="{updateValue}">
         <Icon class="material-icons" slot="leadingIcon">{ico}</Icon>
     </Textfield>
 </div>

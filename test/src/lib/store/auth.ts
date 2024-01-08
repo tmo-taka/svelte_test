@@ -7,9 +7,13 @@ export const name = writable('None')
 
 export const initialSetUserName = () => setContext('userName',name);
 
-export const updateUserName = (newUserName: string):void => {
-    name.set(newUserName)
-    setContext('userName', name);
+export const getUserName = ():Context=> {
+    return getContext<Context>('userName');
 }
 
-export const getUserName = () => getContext<Context>('userName');
+export const updateUserName = (newUserName?:string) => {
+    if(newUserName) {
+        name.set(newUserName);
+        setContext('userName',name);
+    }
+}
