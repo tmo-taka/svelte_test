@@ -11,7 +11,8 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"smui:create": "npm run smui-theme-light && npm run smui-theme-dark",
 		"smui-theme-light": "smui-theme compile static/smui.css -i src/theme",
-		"smui-theme-dark": "smui-theme compile static/smui-dark.css -i src/theme/dark"
+		"smui-theme-dark": "smui-theme compile static/smui-dark.css -i src/theme/dark",
+		"lint:xo": "xo"
 	},
 	"devDependencies": {
 		"@smui/button": "^7.0.0-beta.16",
@@ -24,13 +25,16 @@
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/adapter-node": "^1.3.1",
 		"@sveltejs/kit": "^1.20.4",
+		"eslint-plugin-svelte": "^2.35.1",
 		"smui-theme": "^7.0.0-beta.15",
 		"svelte": "^4.0.5",
 		"svelte-check": "^3.4.3",
+		"svelte-eslint-parser": "^0.33.1",
 		"tippy.js": "^6.3.7",
 		"tslib": "^2.4.1",
 		"typescript": "^5.0.0",
-		"vite": "^4.4.2"
+		"vite": "^4.4.2",
+		"xo": "^0.56.0"
 	},
 	"type": "module",
 	"dependencies": {

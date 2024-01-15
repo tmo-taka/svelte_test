@@ -1,0 +1,15 @@
+{
+    "space": true,
+    "extensions": ["svelte"],
+    "extends": ["plugin:svelte/recommended"],
+    "parser": "@typescript-eslint/parser",
+    "overrides": [
+        {
+            "files": ["**/*.svelte"],
+            "parser": "svelte-eslint-parser",
+            "parserOptions": {
+                "parser": "@typescript-eslint/parser"
+            }
+        }
+    ]
+}
