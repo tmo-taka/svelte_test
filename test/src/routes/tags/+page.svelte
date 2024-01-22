@@ -1,7 +1,7 @@
 <script lang="ts">
     import TagLists from "$lib/components/TagLists.svelte";
 
-    export let data: {tagsLists: TagsLists};
+    export let data: { tagsLists: TagsLists };
     const { tagsLists } = data
 </script>
 

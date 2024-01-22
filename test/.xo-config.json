@@ -5,11 +5,15 @@
     "parser": "@typescript-eslint/parser",
     "overrides": [
         {
-            "files": ["**/*.svelte"],
+            "files": ["*.svelte"],
             "parser": "svelte-eslint-parser",
             "parserOptions": {
                 "parser": "@typescript-eslint/parser"
             }
         }
-    ]
+    ],
+    "parserOptions": {
+        "ecmaVersion": 2020,
+        "extraFileExtensions": [".svelte"]
+    }
 }

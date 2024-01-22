@@ -15,8 +15,8 @@
         ['/tags','Tags'],
     ])
 
-    const tabs:string[] = [...sitePath.values()];
-
+    // デザイン的におかしい
+    const tabs:string[] = $userName !== 'None' ? [...sitePath.values()] : ['HOME'];
     const copyArr:[string,string][] = [...sitePath];
     const valueToKey = (tab:string) => {
         const searchObj:[string,string] | undefined = copyArr.find(([key, value]) => value == tab);
