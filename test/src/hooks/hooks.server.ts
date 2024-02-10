@@ -63,3 +63,7 @@ export const authUser = async(params:{userName: string, passWord: string}) => {
         throw e;
     }
 }
+
+export async function handleError({ error }) {
+	console.log('server error');
+}
