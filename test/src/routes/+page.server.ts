@@ -25,7 +25,7 @@ export const actions = {
             console.log(data);
             // NOTE: ログインできた場合
             if(data) {
-                cookies.set('userName', data.user);
+                cookies.set('userName', data.user, { path: '/' });
                 return { success: true };
             }
             else {
