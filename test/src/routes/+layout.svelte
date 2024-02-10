@@ -1,12 +1,16 @@
 <script lang="ts">
+    import { afterNavigate } from '$app/navigation';
     import { fade, slide } from 'svelte/transition'
     import TabBar from '@smui/tab-bar';
     import Tab, { Label }from '@smui/tab';
     import { getUserName, initialSetUserName, updateUserName } from '$lib/store/auth';
+
     export let data;
-    const {path, user} = data;
+    const {user,path} = data;
+    // cookieにデータがあった場合に格納
+    if(user) {updateUserName(user)};
+    // 初回のstore/contextの設定
     initialSetUserName();
-    updateUserName(user);
     const userName = getUserName();
 
     const sitePath = new Map<string, string>([
@@ -28,6 +32,18 @@
     const getKeypath = reverseKeyArr.find(key => path.includes(key));
     console.log(getKeypath)
     let active = sitePath.get(getKeypath);
+
+    // afterNavigate((navigation:AfterNavigate) => {
+    //     const toPath = navigation.to.route?.id;
+    //     if(toPath && toPath !== '/') {
+    //         console.log($userName === 'None')
+    //         if($userName === 'None') {
+    //             console.log('haiatta');
+    //             error(404, {message: 'Not found'})
+    //         }
+    //     }
+    // })
+
 </script>
 
 <svelte:head>

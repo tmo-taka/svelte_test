@@ -1,5 +1,6 @@
 import { SANITY_PROJECT_ID, SANITY_DATASET } from '$env/static/private';
 import {createClient} from "@sanity/client";
+import { updateUserName } from '$lib/store/auth';
 
 const client = createClient({
     projectId: SANITY_PROJECT_ID,
@@ -57,9 +58,26 @@ export const fetchTags = async() => {
 
 export const authUser = async(params:{userName: string, passWord: string}) => {
     try {
-        const data = await client.fetch(`*[_type == "auth" && user == "${params.userName}" && password == "${params.passWord}"][0]`);
+        const data = await client.fetch(`*[_type == "auth" && user == "${params.userName}" && password == "${params.passWord}"][0]`, { cache: "no-store" });
         return data;
     } catch(e: unknown) {
         throw e;
     }
+}
+
+// export const handle = async({event, resolve}) => {
+//     console.log('event');
+//     console.log(event);
+//     const userName = event.cookies.get('userName');
+//     console.log(userName);
+//     // updateUserName(userName);
+
+//     const response = await resolve(event);
+//     response.status = 404;
+//     console.log('response:',response.status);
+//     return response;
+// }
+
+export async function handleError({ error }) {
+	console.log(error);
 }

@@ -20,6 +20,7 @@ export const actions = {
             userName,
             passWord
         }
+        console.log(params);
 		try {
             const data = await authUser(params);
             console.log(data);

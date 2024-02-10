@@ -11,7 +11,7 @@
         console.log('押された');
     }
 
-    getUserName();
+    console.log(getUserName());
 
     let userName = '';
     let passWord = '';
