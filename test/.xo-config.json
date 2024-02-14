@@ -1,11 +1,14 @@
 {
-    "space": true,
+    "space": false,
+    "rules": {
+        "unicorn/filename-case": "off"
+    },
     "extensions": ["svelte"],
     "extends": ["plugin:svelte/recommended"],
     "parser": "@typescript-eslint/parser",
     "overrides": [
         {
-            "files": ["*.svelte"],
+            "files": ["**/*.svelte"],
             "parser": "svelte-eslint-parser",
             "parserOptions": {
                 "parser": "@typescript-eslint/parser"
@@ -13,7 +16,7 @@
         }
     ],
     "parserOptions": {
-        "ecmaVersion": 2020,
+        "ecmaVersion": "latest",
         "extraFileExtensions": [".svelte"]
     }
 }
