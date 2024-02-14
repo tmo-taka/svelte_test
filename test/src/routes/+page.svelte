@@ -11,7 +11,8 @@
         console.log('押された');
     }
 
-    getUserName();
+    const loginFlg = getUserName();
+    console.log($loginFlg)
 
     let userName = '';
     let passWord = '';
@@ -33,9 +34,11 @@
         </form>
     </section>
 
-    <section>
-        <h2>記事一覧</h2>
-        <ContentLists lists={data.contentsLists} />
-    </section>
+    {#if $loginFlg !== 'None'}
+        <section >
+            <h2>記事一覧</h2>
+            <ContentLists lists={data.contentsLists} />
+        </section>
+    {/if}
 </div>
 
