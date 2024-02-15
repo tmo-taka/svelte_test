@@ -5,12 +5,12 @@ export default defineConfig({
 	plugins: [sveltekit()],
 	server: {
 		host: true,
-        proxy: {
-            '/api': {
+		proxy: {
+			'/api': {
 				target: 'https://wordsapiv1.p.mashape.com',
 				changeOrigin: true,
-				rewrite: (path) => path.replace(/^\/api/, ''),
-			}
-        },
-    }
+				rewrite: path => path.replace(/^\/api/, ''),
+			},
+		},
+	},
 });

@@ -9,7 +9,7 @@ const config = {
 
 	// base pathの設定
 	paths: {
-		base: '/'
+		base: '/',
 	},
 	kit: {
 		// adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.
@@ -24,10 +24,10 @@ const config = {
 		files: {
 			hooks: {
 				server: './src/hooks/hooks.server',
-				client: './src/hooks/hooks.client'
-			}
-		}
-	}
+				client: './src/hooks/hooks.client',
+			},
+		},
+	},
 };
 
 export default config;

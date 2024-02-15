@@ -4,10 +4,10 @@
     export let lists:TagsLists;
 
     const movePage = (tag:Tag) => {
-        // Page遷移
-        const createPath ='/tags/' + tag.id.current;
-        window.location.href = createPath;
-    }
+    	// Page遷移
+    	const createPath = '/tags/' + tag.id.current;
+    	window.location.href = createPath;
+    };
 </script>
 
 <Group>

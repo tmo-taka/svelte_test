@@ -4,10 +4,10 @@
     export let lists:ContentsLists;
 
     const movePage = (content:Content) => {
-        // Page遷移
-        const createPath ='/contents/' + content.slug.current;
-        window.location.href = createPath;
-    }
+    	// Page遷移
+    	const createPath = '/contents/' + content.slug.current;
+    	window.location.href = createPath;
+    };
 </script>
 
 <Group>

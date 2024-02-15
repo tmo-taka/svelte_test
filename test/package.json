@@ -12,7 +12,8 @@
 		"smui:create": "npm run smui-theme-light && npm run smui-theme-dark",
 		"smui-theme-light": "smui-theme compile static/smui.css -i src/theme",
 		"smui-theme-dark": "smui-theme compile static/smui-dark.css -i src/theme/dark",
-		"lint:xo": "xo"
+		"lint:xo": "xo",
+		"lint:xo-fix": "xo --fix"
 	},
 	"devDependencies": {
 		"@smui/button": "^7.0.0-beta.16",
