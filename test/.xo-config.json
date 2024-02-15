@@ -1,5 +1,5 @@
 {
-    "space": false,
+    "space": true,
     "rules": {
         "unicorn/filename-case": "off",
         "capitalized-comments": "off",
