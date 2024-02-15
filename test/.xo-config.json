@@ -1,7 +1,11 @@
 {
     "space": false,
     "rules": {
-        "unicorn/filename-case": "off"
+        "unicorn/filename-case": "off",
+        "capitalized-comments": "off",
+        "@typescript-eslint/object-curly-spacing": "off",
+        "object-curly-spacing": "off",
+        "import/extensions": "off"
     },
     "extensions": ["svelte"],
     "extends": ["plugin:svelte/recommended"],
