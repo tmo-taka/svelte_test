@@ -1,5 +1,5 @@
 import {createClient} from '@sanity/client';
-import { SANITY_PROJECT_ID, SANITY_DATASET } from '$env/static/private';
+import {SANITY_PROJECT_ID, SANITY_DATASET} from '$env/static/private';
 
 const client = createClient({
   projectId: SANITY_PROJECT_ID,
@@ -10,7 +10,9 @@ const client = createClient({
 
 export const fetchContents = async () => {
   try {
-    const data = await client.fetch('*[_type == "content" && published == true]');
+    const data = await client.fetch(
+      '*[_type == "content" && published == true]',
+    );
     return data;
   } catch (error) {
     console.log(error);
@@ -19,7 +21,8 @@ export const fetchContents = async () => {
 
 export const fetchContentFromSlug = async (slug: string) => {
   try {
-    const data = await client.fetch(`*[_type == "content" && slug.current == "${slug}"]{
+    const data =
+      await client.fetch(`*[_type == "content" && slug.current == "${slug}"]{
             title,
             slug,
             published,
@@ -55,15 +58,20 @@ export const fetchTags = async () => {
   }
 };
 
-export const authUser = async (parameters: {userName: string; passWord: string}) => {
+export const authUser = async (parameters: {
+  userName: string;
+  passWord: string;
+}) => {
   try {
-    const data = await client.fetch(`*[_type == "auth" && user == "${parameters.userName}" && password == "${parameters.passWord}"][0]`);
+    const data = await client.fetch(
+      `*[_type == "auth" && user == "${parameters.userName}" && password == "${parameters.passWord}"][0]`,
+    );
     return data;
   } catch (error: unknown) {
     throw error;
   }
 };
 
-export async function handleError({ error }) {
+export async function handleError({error}) {
   console.log('server error');
 }

@@ -1,6 +1,6 @@
-import { setContext } from 'svelte';
-import { authUser } from '../hooks/hooks.server';
-import { fetch } from '$lib/server/fetchContent';
+import {setContext} from 'svelte';
+import {authUser} from '../hooks/hooks.server';
+import {fetch} from '$lib/server/fetchContent';
 
 export async function load() {
   const contentsLists: ContentsLists = await fetch();
@@ -25,11 +25,14 @@ export const actions = {
       console.log(data);
       // NOTE: ログインできた場合
       if (data) {
-        cookies.set('userName', data.user, { path: '/' });
-        return { success: true };
+        cookies.set('userName', data.user, {path: '/'});
+        return {success: true};
       }
 
-      return { success: false, alert: 'ユーザー名かパスワードが間違えています。' };
+      return {
+        success: false,
+        alert: 'ユーザー名かパスワードが間違えています。',
+      };
     } catch (error) {
       throw error;
     }

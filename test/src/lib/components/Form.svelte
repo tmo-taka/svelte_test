@@ -11,7 +11,7 @@
     const updateValue = (event: Event) => {
     	const { target } = event;
     	if (target instanceof HTMLInputElement) {
-    		value = target.value;
+            value = target.value;
     		console.log(value);
     		dispatch('updateValue', value);
     	}
