@@ -8,7 +8,9 @@ const client = createClient({
   useCdn: false,
 });
 
-export const fetchContents = async () => {
+type SanityReturned = ReturnType<typeof createClient> | undefined;
+
+export const fetchContents = async (): Promise<SanityReturned> => {
   try {
     const data = await client.fetch(
       '*[_type == "content" && published == true]',
@@ -19,7 +21,9 @@ export const fetchContents = async () => {
   }
 };
 
-export const fetchContentFromSlug = async (slug: string) => {
+export const fetchContentFromSlug = async (
+  slug: string,
+): Promise<SanityReturned> => {
   try {
     const data =
       await client.fetch(`*[_type == "content" && slug.current == "${slug}"]{
@@ -35,7 +39,7 @@ export const fetchContentFromSlug = async (slug: string) => {
   }
 };
 
-export const fetchContentFromTag = async () => {
+export const fetchContentFromTag = async (): Promise<ContentsLists> => {
   try {
     const data = await client.fetch(`*[_type == "content" && published == true]{
             title,
@@ -45,11 +49,11 @@ export const fetchContentFromTag = async () => {
         }`);
     return data;
   } catch (error) {
-    console.log(error);
+    throw error;
   }
 };
 
-export const fetchTags = async () => {
+export const fetchTags = async (): Promise<TagsLists> => {
   try {
     const data = await client.fetch('*[_type == "tag"]');
     return data;

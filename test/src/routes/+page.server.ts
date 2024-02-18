@@ -1,16 +1,17 @@
 import {setContext} from 'svelte';
+import type {Actions, ServerLoad} from '@sveltejs/kit';
 import {authUser} from '../hooks/hooks.server';
 import {fetch} from '$lib/server/fetchContent';
 
-export async function load() {
+export const load: ServerLoad = async () => {
   const contentsLists: ContentsLists = await fetch();
 
   return {
     contentsLists,
   };
-}
+};
 
-export const actions = {
+export const actions: Actions = {
   // NOTE: ログイン処理
   async login({request, cookies}) {
     const data = await request.formData();

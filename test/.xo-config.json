@@ -6,17 +6,27 @@
         "@typescript-eslint/object-curly-spacing": "off",
         "object-curly-spacing": "off",
         "import/extensions": "off",
-        "no-warning-comments": "off"
+        "no-warning-comments": "off",
+        "no-undef": "off"
     },
     "extensions": ["svelte"],
     "extends": ["plugin:svelte/recommended"],
     "parser": "@typescript-eslint/parser",
+    "globals": {
+        "Tag": true,
+        "TagsLists": true,
+        "Content": true,
+        "ContentsLists": true
+    },
     "overrides": [
         {
             "files": ["**/*.svelte"],
             "parser": "svelte-eslint-parser",
             "parserOptions": {
                 "parser": "@typescript-eslint/parser"
+            },
+            "rules": {
+                "import/no-mutable-exports": 0
             }
         }
     ],
@@ -24,5 +34,6 @@
         "ecmaVersion": "latest",
         "extraFileExtensions": [".svelte"]
     },
+    "semicolon": false,
     "prettier": true
 }
