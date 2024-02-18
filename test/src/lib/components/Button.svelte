@@ -6,7 +6,7 @@
 
     const clickButton = () => {
     	dispatch('clickButton');
-    };
+    }
 </script>
 
     <Button on:click={() => clickButton() } variant="raised" type="submit">

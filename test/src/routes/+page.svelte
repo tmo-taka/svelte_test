@@ -9,7 +9,7 @@
 
     const postApi = async () => {
     	console.log('押された');
-    };
+    }
 
     const loginFlg = getUserName();
     console.log($loginFlg);

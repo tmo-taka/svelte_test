@@ -1,25 +1,25 @@
-import {createClient} from '@sanity/client';
-import {SANITY_PROJECT_ID, SANITY_DATASET} from '$env/static/private';
+import {createClient} from '@sanity/client'
+import {SANITY_PROJECT_ID, SANITY_DATASET} from '$env/static/private'
 
 const client = createClient({
   projectId: SANITY_PROJECT_ID,
   dataset: SANITY_DATASET,
   apiVersion: '2023-12-18',
   useCdn: false,
-});
+})
 
-type SanityReturned = ReturnType<typeof createClient> | undefined;
+type SanityReturned = ReturnType<typeof createClient> | undefined
 
 export const fetchContents = async (): Promise<SanityReturned> => {
   try {
     const data = await client.fetch(
       '*[_type == "content" && published == true]',
-    );
-    return data;
+    )
+    return data
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
 export const fetchContentFromSlug = async (
   slug: string,
@@ -32,12 +32,12 @@ export const fetchContentFromSlug = async (
             published,
             "imageUrl" :mainVisual.asset->url,
             tags[]->
-        }[0]`);
-    return data;
+        }[0]`)
+    return data
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
 export const fetchContentFromTag = async (): Promise<ContentsLists> => {
   try {
@@ -46,36 +46,36 @@ export const fetchContentFromTag = async (): Promise<ContentsLists> => {
             slug,
             "imageUrl" :mainVisual.asset->url,
             tags[] -> {id}
-        }`);
-    return data;
+        }`)
+    return data
   } catch (error) {
-    throw error;
+    throw error
   }
-};
+}
 
 export const fetchTags = async (): Promise<TagsLists> => {
   try {
-    const data = await client.fetch('*[_type == "tag"]');
-    return data;
+    const data = await client.fetch('*[_type == "tag"]')
+    return data
   } catch (error: unknown) {
-    throw error;
+    throw error
   }
-};
+}
 
 export const authUser = async (parameters: {
-  userName: string;
-  passWord: string;
+  userName: string
+  passWord: string
 }) => {
   try {
     const data = await client.fetch(
       `*[_type == "auth" && user == "${parameters.userName}" && password == "${parameters.passWord}"][0]`,
-    );
-    return data;
+    )
+    return data
   } catch (error: unknown) {
-    throw error;
+    throw error
   }
-};
+}
 
 export async function handleError({error}) {
-  console.log('server error');
+  console.log('server error')
 }

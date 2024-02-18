@@ -5,8 +5,8 @@
 
     const movePage = (tag:Tag) => {
     	// Page遷移
-    	const createPath = '/tags/' + tag.id.current;
-    	window.location.href = createPath;
+        const createPath = '/tags/' + tag.id.current;
+        window.location.href = createPath;
     };
 </script>
 
