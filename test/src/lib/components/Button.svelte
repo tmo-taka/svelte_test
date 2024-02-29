@@ -1,11 +1,11 @@
 <script lang="ts">
-    import Button, {Label} from '@smui/button';
-    import { createEventDispatcher } from 'svelte';
+    import Button, {Label} from '@smui/button'
+    import { createEventDispatcher } from 'svelte'
 
-    const dispatch = createEventDispatcher();
+    const dispatch = createEventDispatcher()
 
     const clickButton = () => {
-    	dispatch('clickButton');
+    	dispatch('clickButton')
     }
 </script>
 

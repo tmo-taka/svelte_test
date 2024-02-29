@@ -1,12 +1,12 @@
 <script lang="ts">
-	import Card, {PrimaryAction, Content, Media, MediaContent} from '@smui/card';
+	import Card, {PrimaryAction, Content, Media, MediaContent} from '@smui/card'
 
-	export let data;
-	const {filterContents} = data;
+	export let data
+	const {filterContents} = data
 
     const pageMove = (slug:string) => {
-    	window.location.href = `/contents/${slug}`;
-    };
+    	window.location.href = `/contents/${slug}`
+    }
 </script>
 
 <div class="cardBox">

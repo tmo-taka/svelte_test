@@ -1,0 +1,8 @@
+# https://github.com/xojs/xo/issues/542 (によってprettierをxoでは設定しない)
+
+semi: false
+overrides:
+    - files:
+        - "*.svelte"
+    - plugins:
+        - "prettier-plugin-svelte"

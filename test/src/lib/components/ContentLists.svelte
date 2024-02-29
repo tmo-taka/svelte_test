@@ -1,13 +1,13 @@
 <script lang="ts">
-    import List, { Item, Text, Group } from '@smui/list';
+    import List, { Item, Text, Group } from '@smui/list'
 
-    export let lists:ContentsLists;
+    export let lists:ContentsLists
 
     const movePage = (content:Content) => {
     	// Page遷移
-    	const createPath = '/contents/' + content.slug.current;
-    	window.location.href = createPath;
-    };
+    	const createPath = '/contents/' + content.slug.current
+    	window.location.href = createPath
+    }
 </script>
 
 <Group>

@@ -1,21 +1,21 @@
 <script lang="ts">
-    import Form from '$lib/components/Form.svelte';
-    import Button from '$lib/components/Button.svelte';
-    import ContentLists from '$lib/components/ContentLists.svelte';
-    import { getUserName } from '$lib/store/auth';
+    import Form from '$lib/components/Form.svelte'
+    import Button from '$lib/components/Button.svelte'
+    import ContentLists from '$lib/components/ContentLists.svelte'
+    import { getUserName } from '$lib/store/auth'
 
-    export let data: {contentsLists: ContentsLists};
-    export let form: {success: boolean, alert?: string };
+    export let data: {contentsLists: ContentsLists}
+    export let form: {success: boolean, alert?: string }
 
     const postApi = async () => {
-    	console.log('押された');
+    	console.log('押された')
     }
 
-    const loginFlg = getUserName();
-    console.log($loginFlg);
+    const loginFlg = getUserName()
+    console.log($loginFlg)
 
-    let userName = '';
-    let passWord = '';
+    let userName = ''
+    let passWord = ''
 
 </script>
 

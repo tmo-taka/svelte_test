@@ -5,9 +5,9 @@ export async function load({params}) {
   console.log(params)
   const {slug} = params
   const contents = await fetchContentFromTag()
-  const filterContents = contents.filter((content) => {
+  const filterContents = contents.filter(content => {
     if (content.tags.length > 0) {
-      return content.tags.find((tag) => tag.id.current === slug)
+      return content.tags.find(tag => tag.id.current === slug)
     }
   })
   return {filterContents}
