@@ -22,19 +22,19 @@
 <div>
     <h1>これはブログです</h1>
 
-    <section>
-        <h2>ログインフォーム</h2>
-        <form method="POST" action="?/login">
-            <Form label={'ユーザー名'} value={userName} ico='person' name='userName' on:updateValue={e => userName = e.detail} />
-            <Form label={'パスワード'} value={passWord} ico='key' name='passWord' on:updateValue={e => passWord = e.detail} />
-            {#if form?.alert}
-                <div>{form.alert}</div>
-            {/if}
-            <Button on:clickButton={postApi}>ログイン</Button>
-        </form>
-    </section>
-
-    {#if $loginFlg !== 'None'}
+    {#if $loginFlg === 'None'}
+        <section>
+            <h2>ログインフォーム</h2>
+            <form method="POST" action="?/login">
+                <Form label={'ユーザー名'} value={userName} ico='person' name='userName' on:updateValue={e => userName = e.detail} />
+                <Form label={'パスワード'} value={passWord} ico='key' name='passWord' on:updateValue={e => passWord = e.detail} />
+                {#if form?.alert}
+                    <div>{form.alert}</div>
+                {/if}
+                <Button on:clickButton={postApi}>ログイン</Button>
+            </form>
+        </section>
+    {:else if $loginFlg !== 'None'}
         <section >
             <h2>記事一覧</h2>
             <ContentLists lists={data.contentsLists} />
