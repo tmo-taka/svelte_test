@@ -34,5 +34,6 @@
         "ecmaVersion": "latest",
         "extraFileExtensions": [".svelte"]
     },
-    "semicolon": false
+    "semicolon": false,
+    "prettier": true
 }

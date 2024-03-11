@@ -1,8 +1,13 @@
 # https://github.com/xojs/xo/issues/542 (によってprettierをxoでは設定しない)
 
+# singleQuote: true
 semi: false
+plugins:
+    - "prettier-plugin-svelte"
 overrides:
-    - files:
-        - "*.svelte"
-    - plugins:
-        - "prettier-plugin-svelte"
+    -
+        files:
+            "*.svelte"
+        options:
+            parser:
+                "svelte"

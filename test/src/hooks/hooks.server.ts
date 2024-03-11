@@ -25,8 +25,8 @@ export const fetchContentFromSlug = async (
   slug: string,
 ): Promise<SanityReturned> => {
   try {
-    const data
-      = await client.fetch(`*[_type == "content" && slug.current == "${slug}"]{
+    const data =
+      await client.fetch(`*[_type == "content" && slug.current == "${slug}"]{
             title,
             slug,
             published,
@@ -63,8 +63,8 @@ export const fetchTags = async (): Promise<TagsLists> => {
 }
 
 export const authUser = async (parameters: {
-  userName: string;
-  passWord: string;
+  userName: string
+  passWord: string
 }) => {
   try {
     const data = await client.fetch(
