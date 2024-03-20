@@ -4,6 +4,7 @@
         "unicorn/filename-case": "off",
         "capitalized-comments": "off",
         "@typescript-eslint/object-curly-spacing": "off",
+        "@typescript-eslint/naming-convention": "off",
         "object-curly-spacing": "off",
         "import/extensions": "off",
         "no-warning-comments": "off",

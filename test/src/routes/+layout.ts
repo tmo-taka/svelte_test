@@ -1,15 +1,14 @@
 import {error} from '@sveltejs/kit'
 
-export async function load({url, data}) {
-  if (url.pathname !== '/') {
-    console.log(data.user)
-    if (!data.user) {
-      error(404, 'not logged in')
-    }
+type Data = {
+  locals: {
+    user?: string
   }
+}
 
+export async function load({url, data}: {url: URL; data: Data}) {
   return {
     path: url.pathname,
-    user: data.user,
+    locals: data.locals,
   }
 }

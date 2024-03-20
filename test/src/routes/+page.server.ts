@@ -1,10 +1,10 @@
 import {setContext} from 'svelte'
 import type {Actions, ServerLoad} from '@sveltejs/kit'
 import {authUser} from '../hooks/hooks.server'
-import {fetch} from '$lib/server/fetchContent'
+import {fetchContent} from '$lib/server/fetchContent'
 
 export const load: ServerLoad = async () => {
-  const contentsLists: ContentsLists = await fetch()
+  const contentsLists: ContentsLists = await fetchContent()
 
   return {
     contentsLists,
@@ -13,29 +13,36 @@ export const load: ServerLoad = async () => {
 
 export const actions: Actions = {
   // NOTE: ログイン処理
-  async login({request, cookies}) {
+  async default({request, cookies}) {
+    const requestUrl = new URL(request.url)
     const data = await request.formData()
     const userName = data.get('userName')
     const passWord = data.get('passWord')
+
     const parameters = {
       userName,
       passWord,
     }
-    try {
-      const data = await authUser(parameters)
-      console.log(data)
-      // NOTE: ログインできた場合
-      if (data) {
-        cookies.set('userName', data.user, {path: '/'})
-        return {success: true}
-      }
 
-      return {
-        success: false,
-        alert: 'ユーザー名かパスワードが間違えています。',
-      }
-    } catch (error) {
-      throw error
+    // TODO: null or SuccessPattern の型を作成
+    const judgeLogin = await authUser(parameters)
+    type Response = {
+      success: boolean
+      alert?: string
+      userName?: string
     }
+    const form: Response = {
+      success: true,
+    }
+    if (judgeLogin) {
+      form.userName = userName
+    } else {
+      form.success = false
+      form.alert = 'ユーザー名かパスワードが間違えています。'
+    }
+
+    console.log(form)
+
+    return form
   },
 }

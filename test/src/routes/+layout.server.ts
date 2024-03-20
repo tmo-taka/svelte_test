@@ -1,5 +1,7 @@
-export async function load({cookies}) {
+// import {type Cookies} from '@sveltejs/kit'
+
+export async function load({locals}) {
   return {
-    user: await cookies.get('userName'),
+    locals,
   }
 }

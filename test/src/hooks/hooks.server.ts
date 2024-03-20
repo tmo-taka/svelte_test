@@ -1,4 +1,5 @@
 import {createClient} from '@sanity/client'
+import type {Handle} from '@sveltejs/kit'
 import {SANITY_PROJECT_ID, SANITY_DATASET} from '$env/static/private'
 
 const client = createClient({
@@ -10,6 +11,36 @@ const client = createClient({
 
 type SanityReturned = ReturnType<typeof createClient> | undefined
 
+export const handle: Handle = async ({event, resolve}) => {
+  const currentDir = new URL(event.url)
+  // const cookieValue = await event.cookies.get('userName')
+  const isAPIUrl: boolean =
+    currentDir.pathname.includes('/middleware') ||
+    currentDir.pathname.includes('/api')
+  const isTopUrl: boolean = currentDir.pathname === '/'
+  const response = await resolve(event)
+  if (isAPIUrl) {
+    // NOTE: APIの場合は循環させないようにレスポンスを返す
+    return response
+  }
+
+  // NOTE: APIの場合は循環させないようにレスポンスを返す
+  const cookie = await event.cookies.get('user')
+  console.log('cookie', cookie)
+  if (cookie) {
+    // cookieがある場合
+    event.locals.user = cookie
+    const _response = await resolve(event)
+    return _response
+  }
+
+  if (isTopUrl) {
+    return response
+  }
+
+  return response
+}
+
 export const fetchContents = async (): Promise<SanityReturned> => {
   try {
     const data = await client.fetch(
@@ -18,6 +49,7 @@ export const fetchContents = async (): Promise<SanityReturned> => {
     return data
   } catch (error) {
     console.log(error)
+    throw new Error('era')
   }
 }
 
@@ -77,5 +109,8 @@ export const authUser = async (parameters: {
 }
 
 export async function handleError({error}) {
-  console.log('server error')
+  console.log(error)
+  return {
+    message: error,
+  }
 }
