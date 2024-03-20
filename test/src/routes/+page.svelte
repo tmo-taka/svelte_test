@@ -8,6 +8,9 @@
   export let data: {contentsLists: ContentsLists}
   export let form: {success: boolean; alert?: string; userName?: string}
 
+  // 初回時にコンテキスト作成
+  setUserName()
+
   onMount(async () => {
     if (form?.success) {
       await fetch('/middleware/login', {
@@ -26,7 +29,7 @@
   }
 
   const name = getUserName()
-  const loginFlag: boolean = name !== 'None'
+  const loginFlag: boolean = $name !== 'None'
   let userName = ''
   let passWord = ''
 </script>
@@ -34,7 +37,7 @@
 <div>
   <h1>これはブログです</h1>
 
-  {#if loginFlag}
+  {#if !loginFlag}
     <section>
       <h2>ログインフォーム</h2>
       <form method="POST">
