@@ -41,8 +41,6 @@ export const actions: Actions = {
       form.alert = 'ユーザー名かパスワードが間違えています。'
     }
 
-    console.log(form)
-
     return form
   },
 }
