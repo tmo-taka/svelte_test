@@ -3,7 +3,9 @@ import {getContext, setContext, hasContext} from 'svelte'
 
 type Context = Writable<string>
 
-export const name = writable('None')
+// NOTE: セキュリティリスクのためexportしない
+// https://github.com/sveltejs/kit/issues/8614
+const name = writable('None')
 
 export const setUserName = (newUserName?: string) => {
   if (newUserName) {
